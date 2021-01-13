@@ -18,10 +18,10 @@ export class ResponseInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   addToken(req: HttpRequest<any>, token?: string): HttpRequest<any> {
-    // if (token) {
+    if (token) {
       return req.clone({ setHeaders: { Authorization: 'Bearer ' + token } });
-    // }
-    // return req;
+    }
+    return req;
   }
 
   intercept(

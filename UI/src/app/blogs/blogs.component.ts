@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BlogsService } from '../services/blogs.service';
 
 @Component({
@@ -12,14 +11,8 @@ export class BlogsComponent implements OnInit {
 
   constructor(private blogService: BlogsService) {}
 
-  createBlogForm: FormGroup;
-
   ngOnInit(): void {
     this.getBlogs();
-    this.createBlogForm = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-    });
   }
 
   getBlogs() {
@@ -33,50 +26,14 @@ export class BlogsComponent implements OnInit {
     );
   }
 
-  deleteBlog() {
-    this.blogService.deleteBlog().subscribe(() => {
-      this.getBlogs();
-    }, error => {
-      // do domething
-    })
-  }
-
-  createBlog() {
-    if (this.createBlogForm.invalid) {
-      this.createBlogForm.markAllAsTouched();
-      return;
-    }
-
-    const blogModel = {
-      title: this.createBlogForm.value.title,
-      description: this.createBlogForm.value.description,
-    };
-
-    this.blogService.createBlog(blogModel).subscribe((response) => {
-      this.createBlogForm.reset();
-      this.getBlogs();
-    });
-  }
-
-  setDataInForm(data) {
-    this.createBlogForm.controls.title.setValue(data.title);
-    this.createBlogForm.controls.descriptio.setValue(datna.descriptio);
-  }
-
-   updateBlog() {
-    if (this.createBlogForm.invalid) {
-      this.createBlogForm.markAllAsTouched();
-      return;
-    }
-
-    const blogModel = {
-      title: this.createBlogForm.value.title,
-      description: this.createBlogForm.value.description,
-    };
-
-    this.blogService.updateBlog(blogModel).subscribe((response) => {
-      this.createBlogForm.reset();
-      this.getBlogs();
-    });
+  deleteBlog(id: string) {
+    this.blogService.deleteBlog(id).subscribe(
+      () => {
+        this.getBlogs();
+      },
+      (error) => {
+        // do domething
+      }
+    );
   }
 }

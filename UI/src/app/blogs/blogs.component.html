@@ -1,12 +1,12 @@
-<app-header></app-header>
-<hr>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-    <a href="javascript:void(0)" class="card-link">Card link</a>
-    <a href="javascript:void(0)" class="card-link">Another link</a>
+<div class="row" *ngFor="let blog of blogs">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{blog?.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{blog?.createdAt | date:'short'}}</h6>
+      <p class="card-text">{{blog?.description}}</p>
+      <button class="btn btn-outline-warning my-2 my-sm-0 mr-1" type="button" [routerLink]="['/create-blog']"
+        [queryParams]="{id: blog._id}">Edit</button>
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="button" (click)="deleteBlog(blog._id)">Delete</button>
+    </div>
   </div>
 </div>
