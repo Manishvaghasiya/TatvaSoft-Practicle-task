@@ -33,7 +33,6 @@ router.get('/blogs', auth, async (req, res) => {
     try {
 
         const blogs = await Blog.find(match, null, { skip: parseInt(req.query.skip), limit: parseInt(req.query.limit), sort });
-        console.log(blogs);
         res.send(blogs);
 
     } catch (error) {

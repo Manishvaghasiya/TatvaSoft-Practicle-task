@@ -19,7 +19,7 @@ export class UserService {
     return this.httpClient.get('users/me');
   }
 
-  getUser() {
+  getUsers() {
     return this.httpClient.get('users');
   }
 

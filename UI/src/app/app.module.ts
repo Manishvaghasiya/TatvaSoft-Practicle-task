@@ -11,6 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './blogs/header/header.component';
 import { ResponseInterceptorService } from './services/response-interceptor.service';
 import { CreateBlogComponent } from './blogs/create-blog/create-blog.component';
+import { MyBlogsComponent } from './blogs/my-blogs/my-blogs.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CreateBlogComponent } from './blogs/create-blog/create-blog.component';
     BlogsComponent,
     HeaderComponent,
     CreateBlogComponent,
+    MyBlogsComponent,
   ],
   imports: [
     BrowserModule,
