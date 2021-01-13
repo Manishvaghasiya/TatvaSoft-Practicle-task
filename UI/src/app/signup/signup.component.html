@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="card text-center">
+      <div class="card-header">
+        User SignUp
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid card-body">
+  <form [formGroup]="signupForm" novalidate>
+
+    <div class="form-group">
+      <label for="firstname">firstname</label>
+      <input type="firstname" class="form-control" id="firstname" formControlName="firstName"
+        placeholder="enter firstname">
+      <small class="form-text text-muted error-form"
+        *ngIf="signupForm.controls.firstName.errors && (signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched)">Please
+        enter firstname</small>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">lastname</label>
+      <input type="lastName" class="form-control" id="lastName" formControlName="lastName" placeholder="enter lastName">
+      <small class="form-text text-muted error-form"
+        *ngIf="signupForm.controls.lastName.errors && (signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched)">Please
+        enter lastname</small>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select class="form-control" id="role" formControlName="role">
+        <option [value]="'user'">User</option>
+        <option [value]="'admin'">Admin</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email" placeholder="enter email">
+      <small class="form-text text-muted error-form"
+        *ngIf="signupForm.controls.email.errors && (signupForm.controls.email.dirty || signupForm.controls.email.touched)">Please
+        enter email</small>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password" placeholder="enter password">
+      <small class="form-text text-muted error-form"
+        *ngIf="signupForm.controls.password.errors && (signupForm.controls.password.dirty || signupForm.controls.password.touched)">Please
+        enter password</small>
+    </div>
+    <button type="button" (click)="createUser()" class="btn btn-success">Register</button>
+    <button type="button" routerLink="/login" class="btn btn-primary">Login</button>
+  </form>
+</div>
